@@ -9,6 +9,7 @@ const service = axios.create({
   // withCredentials: true, // send cookies when cross-domain requests
   timeout: 5000, // request timeout
 });
+service.defaults.baseURL="http://127.0.0.1:5000"
 
 service.interceptors.request.use(
   (config) => {
