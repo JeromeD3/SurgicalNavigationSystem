@@ -40,20 +40,23 @@
 const instance = getCurrentInstance();
 
 const getPic = (files, index) => {
-  const url = new URL(Object.keys(files)[index], import.meta.url).href
-  return url
+  return new URL(`../assets/images/${files[index]}`, import.meta.url).href
 }
 
 const ctPic = ref('')
 const ctRef = ref()
 const ctCount = ref(0)
 const ctDirlength = ref(0)
-const ctFiles = import.meta.glob('@/assets/images/ct/*.jpg', { as: 'raw' })
+const ctFiles = import.meta.glob('@/assets/images/ct/*.jpg')
 const getCtPic = (index) => {
   if (index === 0) {
     ctDirlength.value = Object.keys(ctFiles).length
   }
-  return getPic(ctFiles, index)
+  const imgPathArr = []
+  Object.keys(ctFiles).forEach((item) => {
+    imgPathArr.push(item.replace(/\/src\/assets\/images\//g, ''))
+  })
+  return getPic(imgPathArr, index)
 }
 const ctPicAdd = () => {
   if (ctCount.value >= ctDirlength.value - 1) {
@@ -76,7 +79,6 @@ const ctPicSub = () => {
   ctPic.value = getCtPic(ctCount.value)
 }
 
-
 const xrayPic = ref('')
 const xrayCount = ref(0)
 const xrayDirlength = ref(0)
@@ -86,7 +88,11 @@ const getXrayPic = (index) => {
   if (index === 0) {
     xrayDirlength.value = Object.keys(xrayFiles).length
   }
-  return getPic(xrayFiles, index)
+  const imgPathArr = []
+  Object.keys(xrayFiles).forEach((item) => {
+    imgPathArr.push(item.replace(/\/src\/assets\/images\//g, ''))
+  })
+  return getPic(imgPathArr, index)
 }
 const xrayPicAdd = () => {
   if (xrayCount.value >= xrayDirlength.value - 1) {
