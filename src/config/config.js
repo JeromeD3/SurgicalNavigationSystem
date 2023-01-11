@@ -4,7 +4,7 @@ export default {
   // 输出文件的目录
   outputDir: "dist",
   // 静态目录
-  assetsDir: "static",
+  assetsDir: "assets",
   // 页面标题
   title: "xxx",
   // CDN

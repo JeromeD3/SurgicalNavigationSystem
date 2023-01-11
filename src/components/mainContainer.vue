@@ -41,21 +41,19 @@ const instance = getCurrentInstance();
 
 const getPic = (files, index) => {
   const url = new URL(Object.keys(files)[index], import.meta.url).href
-  console.log(url);
-  return Object.keys(files)[index]
+  return url
 }
 
 const ctPic = ref('')
 const ctRef = ref()
 const ctCount = ref(0)
 const ctDirlength = ref(0)
-const ctFiles = import.meta.glob('@/assets/images/ct/*.jpg')
+const ctFiles = import.meta.glob('@/assets/images/ct/*.jpg', { as: 'raw' })
 const getCtPic = (index) => {
   if (index === 0) {
-    ctDirlength.value = Object.keys(ctFiles.value).length
+    ctDirlength.value = Object.keys(ctFiles).length
   }
-  // return Object.keys(ctFiles.value)[index]
-  // return getPic(ctFiles.value, index)
+  return getPic(ctFiles, index)
 }
 const ctPicAdd = () => {
   if (ctCount.value >= ctDirlength.value - 1) {
