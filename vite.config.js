@@ -12,11 +12,11 @@ import IconsResolver from "unplugin-icons/resolver";
 import { FileSystemIconLoader } from "unplugin-icons/loaders";
 import config from "./src/config/config";
 import viteCompression from "vite-plugin-compression";
-import { loadEnv } from "vite";
+// import { loadEnv } from "vite";
 
-const CWD = process.cwd();
-export default ({ mode }) => {
-  const { VITE_NODE_ENV } = loadEnv(mode, CWD);
+// const CWD = process.cwd();
+export default () => {
+  // const { VITE_NODE_ENV } = loadEnv(mode, CWD);
   // const isProd = ["development", "test", "production"].includes(VITE_NODE_ENV);
 
   return {
